@@ -109,44 +109,44 @@ local keys = {
    },
 
    -- background controls --
-   {
-      key = [[/]],
-      mods = mod.SUPER,
-      action = wezterm.action_callback(function(window, _pane)
-         backdrops:random(window)
-      end),
-   },
-   {
-      key = [[,]],
-      mods = mod.SUPER,
-      action = wezterm.action_callback(function(window, _pane)
-         backdrops:cycle_back(window)
-      end),
-   },
-   {
-      key = [[.]],
-      mods = mod.SUPER,
-      action = wezterm.action_callback(function(window, _pane)
-         backdrops:cycle_forward(window)
-      end),
-   },
-   {
-      key = [[/]],
-      mods = mod.SUPER_REV,
-      action = act.InputSelector({
-         title = 'InputSelector: Select Background',
-         choices = backdrops:choices(),
-         fuzzy = true,
-         fuzzy_description = 'Select Background: ',
-         action = wezterm.action_callback(function(window, _pane, idx)
-            if not idx then
-               return
-            end
-            ---@diagnostic disable-next-line: param-type-mismatch
-            backdrops:set_img(window, tonumber(idx))
-         end),
-      }),
-   },
+--    {
+--       key = [[/]],
+--       mods = mod.SUPER,
+--       action = wezterm.action_callback(function(window, _pane)
+--          backdrops:random(window)
+--       end),
+--    },
+--    {
+--       key = [[,]],
+--       mods = mod.SUPER,
+--       action = wezterm.action_callback(function(window, _pane)
+--          backdrops:cycle_back(window)
+--       end),
+--    },
+--    {
+--       key = [[.]],
+--       mods = mod.SUPER,
+--       action = wezterm.action_callback(function(window, _pane)
+--          backdrops:cycle_forward(window)
+--       end),
+--    },
+--    {
+--       key = [[/]],
+--       mods = mod.SUPER_REV,
+--       action = act.InputSelector({
+--          title = 'InputSelector: Select Background',
+--          choices = backdrops:choices(),
+--          fuzzy = true,
+--          fuzzy_description = 'Select Background: ',
+--          action = wezterm.action_callback(function(window, _pane, idx)
+--             if not idx then
+--                return
+--             end
+--             ---@diagnostic disable-next-line: param-type-mismatch
+--             backdrops:set_img(window, tonumber(idx))
+--          end),
+--       }),
+--    },
    {
       key = 'b',
       mods = mod.SUPER,
@@ -237,6 +237,20 @@ local mouse_bindings = {
       event = { Up = { streak = 1, button = 'Left' } },
       mods = 'CTRL',
       action = act.OpenLinkAtMouseCursor,
+   },
+   -- 添加鼠标右键粘贴支持
+   {
+      event = { Down = { streak = 1, button = "Right" } },
+      mods = "NONE",
+      action = wezterm.action_callback(function(window, pane)
+          local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+          if has_selection then
+              window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
+              window:perform_action(act.ClearSelection, pane)
+          else
+              window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
+          end
+      end),
    },
 }
 

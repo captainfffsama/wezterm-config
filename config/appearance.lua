@@ -19,17 +19,22 @@ return {
    cursor_blink_rate = 650,
 
    -- color scheme
-   colors = colors,
+--    colors = colors,
+   color_scheme = "Catppuccin Mocha", -- orCatppuccin Mocha, Macchiato, Frappe, Latte
+
+
 
    -- background
-   background = backdrops:initial_options(false), -- set to true if you want wezterm to start on focus mode
+   -- background = backdrops:initial_options(true), -- set to true if you want wezterm to start on focus mode
+   -- 设置透明A度
+   window_background_opacity=0.7,
 
    -- scrollbar
-   enable_scroll_bar = true,
+   enable_scroll_bar = false,
 
    -- tab bar
    enable_tab_bar = true,
-   hide_tab_bar_if_only_one_tab = false,
+   hide_tab_bar_if_only_one_tab = true,
    use_fancy_tab_bar = false,
    tab_max_width = 25,
    show_tab_index_in_tab_bar = false,
@@ -42,6 +47,7 @@ return {
       top = 10,
       bottom = 7.5,
    },
+   window_decorations = "NONE",
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
