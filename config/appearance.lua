@@ -25,9 +25,9 @@ return {
 
 
    -- background: pass in `true` if you want wezterm to start with focus mode on (no bg images)
-   background = backdrops:initial_options(false),
-   -- 设置透明A度
-   window_background_opacity=0.7,
+   background = backdrops:initial_options(true),
+   -- 设置透明度
+   window_background_opacity=0.5,
    -- scrollbar
    enable_scroll_bar = false,
 
