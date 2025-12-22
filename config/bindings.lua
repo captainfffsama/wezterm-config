@@ -109,12 +109,12 @@ local keys = {
 --    },
    {
       key = '=',
-      mods = mod.SUPER_REV,
+      mods = mod.SUPER,
       action = act.IncreaseFontSize,
    },
    {
       key = '-',
-      mods = mod.SUPER_REV,
+      mods = mod.SUPER,
       action = act.DecreaseFontSize,
    },
    {

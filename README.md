@@ -122,7 +122,7 @@
     > :bulb:<br>
     > Toast notifications don't work in non-portable installations.<br>
     > See issue <https://github.com/wez/wezterm/issues/5166> for more details
-  
+
     ---
 
     **MacOS**
@@ -301,10 +301,14 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 | Keys                          | Action               |
 | ----------------------------- | -------------------- |
 | <kbd>SUPER</kbd>+<kbd>n</kbd> | `SpawnWindow`        |
-| <kbd>SUPER</kbd>+<kbd>=</kbd> | Increase Window Size |
-| <kbd>SUPER</kbd>+<kbd>-</kbd> | Decrease Window Size |
+| ~~<kbd>SUPER</kbd>+<kbd>=</kbd>~~ | ~~Increase Window Size~~ |
+| ~~<kbd>SUPER</kbd>+<kbd>-</kbd>~~ | ~~Decrease Window Size~~ |
+| <kbd>SUPER</kbd>+<kbd>=</kbd> | Increase Font Size |
+| <kbd>SUPER</kbd>+<kbd>-</kbd> | Decrease Font Size |
+
 
 &nbsp;
+
 
 #### Panes
 
