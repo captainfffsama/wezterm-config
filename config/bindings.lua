@@ -70,7 +70,7 @@ local keys = {
    { key = ']',          mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
    { key = '[',          mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
    { key = ']',          mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
-   { key = 'Tab',        mods = 'CTRL|ALT',    action = act.ActivateTabRelative(1) },
+   { key = 'Tab',        mods = 'CTRL|SHIFT',  action = act.ActivateTabRelative(1) },
 
    -- tab: title
    { key = '0',          mods = mod.SUPER,     action = act.EmitEvent('tabs.manual-update-tab-title') },
