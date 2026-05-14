@@ -29,7 +29,7 @@ function BackDrops:init()
       images_dir = wezterm.config_dir .. '/backdrops/',
       focus_color = colors.background,
       focus_on = false,
-      opacity=0.7,
+      opacity=0.65,
    }
    local backdrops = setmetatable(inital, self)
    return backdrops
@@ -86,7 +86,7 @@ function BackDrops:_create_opts()
          width = '120%',
          vertical_offset = '-10%',
          horizontal_offset = '-10%',
-         opacity = 0.96,
+         opacity = self.opacity,
       },
    }
 end
@@ -102,7 +102,7 @@ function BackDrops:_create_focus_opts()
          width = '120%',
          vertical_offset = '-10%',
          horizontal_offset = '-10%',
-         opacity = 1,
+         opacity = self.opacity,
       },
    }
 end
@@ -144,15 +144,13 @@ function BackDrops:_set_focus_opt(window)
             width = '120%',
             vertical_offset = '-10%',
             horizontal_offset = '-10%',
-            opacity = 1,
+            opacity = self.opacity,
          },
       },
       enable_tab_bar = window:effective_config().enable_tab_bar,
    }
    window:set_config_overrides(opts)
 end
-
-
 
 ---Convert the `files` array to a table of `InputSelector` choices
 ---see: https://wezfurlong.org/wezterm/config/lua/keyassignment/InputSelector.html

@@ -16,15 +16,15 @@ end
 -- stylua: ignore
 local keys = {
    -- misc/useful --
-   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
-   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
-   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
-   { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
-   {
-      key = 'F5',
-      mods = 'NONE',
-      action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
-   },
+--    { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
+--    { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
+--    { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
+--    { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
+--    {
+--       key = 'F5',
+--       mods = 'NONE',
+--       action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
+--    },
    { key = 'F11', mods = 'NONE',    action = act.ToggleFullScreen },
    { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },
    { key = 'f',   mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
@@ -60,7 +60,7 @@ local keys = {
    -- tabs --
    -- tabs: spawn+close
    { key = 't',          mods = mod.SUPER,     action = act.SpawnTab('DefaultDomain') },
-   { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:Ubuntu' }) },
+   { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'wsl:ubuntu-fish' }) },
    { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
    { key = 'n',          mods = 'CTRL|ALT',    action = act.SpawnTab('DefaultDomain') },
    { key = 'x',          mods = 'CTRL|ALT',    action = act.CloseCurrentTab({ confirm = false }) },
@@ -84,30 +84,47 @@ local keys = {
    { key = 'n',          mods = mod.SUPER,     action = act.SpawnWindow },
 
    -- window: zoom window
-   {
-      key = '-',
-      mods = mod.SUPER,
-      action = wezterm.action_callback(function(window, _pane)
-         local dimensions = window:get_dimensions()
-         if dimensions.is_full_screen then
-            return
-         end
-         local new_width = dimensions.pixel_width - 50
-         local new_height = dimensions.pixel_height - 50
-         window:set_inner_size(new_width, new_height)
-      end)
-   },
+--   {
+--       key = '-',
+--       mods = mod.SUPER,
+--       action = wezterm.action_callback(function(window, _pane)
+--          local dimensions = window:get_dimensions()
+--          if dimensions.is_full_screen then
+--             return
+--          end
+--          local new_width = dimensions.pixel_width - 50
+--          local new_height = dimensions.pixel_height - 50
+--          window:set_inner_size(new_width, new_height)
+--       end)
+--    },
+--    {
+--       key = '=',
+--       mods = mod.SUPER,
+--       action = wezterm.action_callback(function(window, _pane)
+--          local dimensions = window:get_dimensions()
+--          if dimensions.is_full_screen then
+--             return
+--          end
+--          local new_width = dimensions.pixel_width + 50
+--          local new_height = dimensions.pixel_height + 50
+--          window:set_inner_size(new_width, new_height)
+--       end)
+--    },
    {
       key = '=',
       mods = mod.SUPER,
+      action = act.IncreaseFontSize,
+   },
+   {
+      key = '-',
+      mods = mod.SUPER,
+      action = act.DecreaseFontSize,
+   },
+   {
+      key = 'Enter',
+      mods = mod.SUPER_REV,
       action = wezterm.action_callback(function(window, _pane)
-         local dimensions = window:get_dimensions()
-         if dimensions.is_full_screen then
-            return
-         end
-         local new_width = dimensions.pixel_width + 50
-         local new_height = dimensions.pixel_height + 50
-         window:set_inner_size(new_width, new_height)
+         window:maximize()
       end)
    },
 
@@ -200,7 +217,7 @@ local keys = {
       action = act.ActivateKeyTable({
          name = 'resize_font',
          one_shot = false,
-         timemout_miliseconds = 1000,
+         timemout_milliseconds = 1000,
       }),
    },
    -- resize panes
@@ -210,7 +227,7 @@ local keys = {
       action = act.ActivateKeyTable({
          name = 'resize_pane',
          one_shot = false,
-         timemout_miliseconds = 1000,
+         timemout_milliseconds = 1000,
       }),
    },
 }
